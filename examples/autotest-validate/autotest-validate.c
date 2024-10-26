@@ -5,6 +5,10 @@
 #include "autotest-validate.h"
 #include <stdbool.h>
 
+
+#define MY_USERNAME "davarabinovich"
+
+
 /**
 * @return true (as you may have guessed from the name)
 */
@@ -27,5 +31,6 @@ bool this_function_returns_false()
  */
 const char *my_username()
 {
-    return "todo-please-enter-your-username-here-in-my_username";
+    return MY_USERNAME;
 }
+
