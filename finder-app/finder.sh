@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 if [ $# -eq 0 ]
@@ -13,21 +13,26 @@ then
 	exit 1
 fi
 
-
 FILES_DIR=$1
 SEARCH_STR=$2
+IFS='
+'
 
-
-IFS=$'\n'
-
-FILES="$(find ${FILES_DIR} -type f -name "*")"
-FILES=(${FILES})
-FILES_NUM=${#FILES[@]}
+FILES="$(find ${FILES_DIR} -type f)"
+FILES_NUM=0
+for FILE in $FILES
+do
+	FILES_NUM=$((FILES_NUM+1))
+done
 
 cd ${FILES_DIR}
+
 LINES="$(grep -r "${SEARCH_STR}" *)"
-LINES=(${LINES})
-LINES_NUM=${#LINES[@]}
+LINES_NUM=0
+for LINE in $LINES
+do
+	LINES_NUM=$((LINES_NUM+1))
+done
 
 echo "The number of files are ${FILES_NUM} and the number of matching lines are ${LINES_NUM}"
 exit 0
