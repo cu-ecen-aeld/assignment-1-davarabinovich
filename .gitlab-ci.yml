@@ -13,6 +13,7 @@ variables:
     DOCKER_TLS_CERTDIR: "/certs"
 
 test:
+	runs-on: self-hosted
     stage: test
     script:
         - cd ${CI_PROJECT_DIR}
